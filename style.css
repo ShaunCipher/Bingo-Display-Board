@@ -12,11 +12,11 @@ body {
 /* Logo Watermark */
 body::after {
     content: "";
-    background-image: url('logo_transparent.png');
+    background-image: url('logo.png');
     background-repeat: no-repeat;
     background-position: right 20px bottom 20px;
     background-size: 100px;
-    opacity: 0.4;
+    opacity: 0.2;
     position: fixed;
     top: 0; left: 0; bottom: 0; right: 0;
     z-index: -1;
@@ -30,68 +30,46 @@ body::after {
     transition: padding 0.1s ease;
 }
 
-.controls {
-    text-align: center;
-    margin-top: 20px; /* This pushes the buttons to the bottom of the sidebar */
-    display: flex;
-    justify-content: center; /* Horizontal centering */
-    align-items: center;     /* Vertical centering */
-    gap: 15px;               /* Space between the Red button and the Gear */
-    width: 100%;             /* Ensures it takes the full width of the sidebar */
-}
-
-/* Layout Columns */
 .left {
     flex: 2;
     padding: 10px;
     height: 100%;
 }
 
-.right {
-    flex: 1;
-    padding: 10px;
-    border-left: 3px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: rgba(244, 244, 244, 0.8);
-}
-
-/* Bingo Grid visibility logic */
 .bingo-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 4px;
+    gap: 6px;
     height: 100%;
 }
 
 .column {
     display: grid;
     grid-template-rows: auto repeat(15, 1fr);
-    gap: 2px;
+    gap: 4px;
 }
 
 .header {
     text-align: center;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     background: #333;
     color: white;
-    padding: 4px;
-    border-radius: 4px;
+    padding: 6px;
+    border-radius: 6px;
 }
 
 .num-btn {
     background: #ddd;
-    border: 1px solid #aaa;
-    border-radius: 4px;
+    border: 2px solid #aaa;
+    border-radius: 6px;
     font-size: 24px;
     cursor: pointer;
+    padding: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 0;
-    transition: 0.2s;
 }
 
 .num-btn.active {
@@ -100,83 +78,75 @@ body::after {
     border-color: #2e7d32;
 }
 
-/* History & Recent */
+.right {
+    flex: 1;
+    padding: 10px;
+    border-left: 3px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
 .recent {
     text-align: center;
-    font-size: 28px;
+    font-size: 34px;
     font-weight: bold;
     background: #222;
     color: #fff;
-    padding: 10px;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 10px;
 }
 
 .history-container {
     background: #ddd;
-    border: 1px solid #aaa;
-    padding: 8px;
-    border-radius: 8px;
+    border: 2px solid #aaa;
+    padding: 10px;
+    border-radius: 10px;
     text-align: center;
 }
 
-.history-title {
-    font-size: 12px;
-    color: #666;
-    text-transform: uppercase;
-    font-weight: bold;
-}
-
-.history-list {
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
-}
-
+.history-title { font-size: 14px; color: #666; font-weight: bold; text-transform: uppercase; }
+.history-list { font-size: 24px; font-weight: bold; color: #333; margin-top: 5px; }
 .newest-call { color: #2e7d32; }
 
-/* Pattern Grid */
-.pattern-title { text-align: center; font-weight: bold; margin-top: 5px; }
-.pattern-letters { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: 5px; }
-.pattern-letters div { text-align: center; background: #333; color: white; border-radius: 2px; font-size: 14px; }
-.pattern-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; margin-top: 4px; }
-.pattern-btn { height: 40px; background: #eee; border: 1px solid #aaa; border-radius: 4px; cursor: pointer; }
-.pattern-btn.active { background: #2196f3; border-color: #1565c0; }
+.pattern-title { text-align: center; font-size: 22px; margin: 10px 0 6px; }
+.pattern-letters { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin-bottom: 6px; }
+.pattern-letters div { text-align: center; font-weight: bold; font-size: 18px; background: #333; color: white; padding: 4px; border-radius: 4px; }
+.pattern-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.pattern-btn { height: 55px; background: #eee; border: 2px solid #aaa; border-radius: 6px; cursor: pointer; font-size: 20px; }
+.pattern-btn.active { background: #2196f3; color: white; border-color: #1565c0; }
 .free { background: gold; font-weight: bold; cursor: default; }
 
-/* Settings UI */
-.settings-panel {
-    display: none; position: fixed; bottom: 70px; right: 20px;
-    background: white; padding: 20px; border: 2px solid #333; border-radius: 12px;
-    z-index: 1000; flex-direction: column; width: 280px; box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-}
-.settings-group { margin-bottom: 10px; display: flex; flex-direction: column; gap: 5px; }
-.settings-group label { display: flex; justify-content: space-between; font-size: 13px; }
-.reset-all-btn { background: #444; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; margin-top: 10px; }
-.close-settings-btn { background: #eee; border: 1px solid #ccc; padding: 8px; margin-top: 5px; border-radius: 6px; cursor: pointer; }
-
-.reset-btn {
-    background: #c62828;
-    color: white;
-    border: none;
-    padding: 12px 24px; /* Increased padding for a better touch target on tablets */
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 16px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-.settings-toggle {
-    background: #444;
-    color: white;
-    border: none;
-    width: 45px;  /* Fixed width and height makes it a perfect circle */
-    height: 45px;
-    border-radius: 50%;
-    cursor: pointer;
+.controls {
+    text-align: center;
+    margin-top: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    gap: 15px;
 }
+
+.reset-btn {
+    font-size: 16px;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    background: #c62828;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.settings-toggle {
+    background: #444; color: white; border: none; width: 45px; height: 45px; border-radius: 50%; cursor: pointer; font-size: 20px;
+}
+
+.settings-panel {
+    display: none; position: fixed; bottom: 80px; right: 20px; background: white; padding: 20px; border: 2px solid #333; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1000; flex-direction: column; gap: 12px; width: 280px;
+}
+
+.settings-group { display: flex; flex-direction: column; gap: 5px; }
+.settings-group label { display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.settings-buttons { display: flex; flex-direction: column; gap: 8px; margin-top: 10px; }
+.reset-all-btn { background: #444; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer; }
+.close-btn { background: #eee; border: 1px solid #ccc; padding: 8px; border-radius: 6px; cursor: pointer; }

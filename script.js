@@ -9,10 +9,9 @@ const bingoRanges = {
 let calledHistory = [];
 const bingoGrid = document.getElementById("bingoGrid");
 const lastCalled = document.getElementById("lastCalled");
-const historyDisplay = document.getElementById("callHistory");
-const patternGrid = document.getElementById("patternGrid");
+const historyList = document.getElementById("callHistory");
 
-// BUILD BINGO BOARD
+// Build Bingo Grid
 for (const letter in bingoRanges) {
     const col = document.createElement("div");
     col.className = "column";
@@ -33,20 +32,21 @@ for (const letter in bingoRanges) {
             const num = parseInt(btn.textContent);
 
             if (btn.classList.contains("active")) {
-                lastCalled.textContent = num;
+                lastCalled.textContent = i;
                 calledHistory.unshift(num);
             } else {
                 calledHistory = calledHistory.filter(n => n !== num);
                 lastCalled.textContent = calledHistory.length > 0 ? calledHistory[0] : "---";
             }
-            updateHistoryDisplay();
+            updateHistory();
         };
         col.appendChild(btn);
     }
     bingoGrid.appendChild(col);
 }
 
-// BUILD PATTERN GRID
+// Build Pattern Grid
+const patternGrid = document.getElementById("patternGrid");
 for (let i = 0; i < 25; i++) {
     const btn = document.createElement("button");
     btn.className = "pattern-btn";
@@ -60,17 +60,16 @@ for (let i = 0; i < 25; i++) {
     patternGrid.appendChild(btn);
 }
 
-function updateHistoryDisplay() {
+function updateHistory() {
     if (calledHistory.length === 0) {
-        historyDisplay.textContent = "---";
+        historyList.textContent = "---";
     } else {
-        const displayLimit = 8;
-        const recent = calledHistory.slice(0, displayLimit);
+        const recent = calledHistory.slice(0, 8);
         let html = `<span class="newest-call">${recent[0]}</span>`;
         if (recent.length > 1) {
             html += ", " + recent.slice(1).join(", ");
         }
-        historyDisplay.innerHTML = html;
+        historyList.innerHTML = html;
     }
 }
 
@@ -80,7 +79,7 @@ function resetGame() {
     document.querySelectorAll(".pattern-btn").forEach(b => b.classList.remove("active"));
     lastCalled.textContent = "---";
     calledHistory = [];
-    updateHistoryDisplay();
+    updateHistory();
 }
 
 function toggleSettings() {
@@ -95,7 +94,7 @@ function applySettings() {
     const r = document.getElementById("padRight").value;
     const fontSize = document.getElementById("fontInput").value;
 
-    const container = document.querySelector(".container");
+    const container = document.getElementById("mainContainer");
     container.style.padding = `${t}px ${r}px ${b}px ${l}px`;
 
     document.querySelectorAll(".num-btn").forEach(btn => {

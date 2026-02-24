@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bingo Caller Pro</title>
+    <title>Bingo Caller Board</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="container">
+<div class="container" id="mainContainer">
     <div class="left">
         <div class="bingo-grid" id="bingoGrid"></div>
     </div>
@@ -20,7 +20,7 @@
         </div>
 
         <div class="history-container">
-            <div class="history-title">History</div>
+            <div class="history-title">Recent History</div>
             <div id="callHistory" class="history-list">---</div>
         </div>
 
@@ -43,7 +43,7 @@
     <h3>Display Settings</h3>
     
     <div class="settings-group">
-        <p><strong>Container Padding</strong></p>
+        <p><strong>Padding</strong></p>
         <label>Top: <input type="range" id="padTop" min="0" max="100" value="10" oninput="applySettings()"></label>
         <label>Bottom: <input type="range" id="padBottom" min="0" max="100" value="10" oninput="applySettings()"></label>
         <label>Left: <input type="range" id="padLeft" min="0" max="100" value="10" oninput="applySettings()"></label>
@@ -56,8 +56,8 @@
     </div>
 
     <div class="settings-buttons">
-        <button class="reset-all-btn" onclick="resetDisplayDefaults()">Reset to Defaults</button>
-        <button class="close-settings-btn" onclick="toggleSettings()">Close</button>
+        <button class="reset-all-btn" onclick="resetDisplayDefaults()">Reset to Default</button>
+        <button class="close-btn" onclick="toggleSettings()">Close</button>
     </div>
 </div>
 
