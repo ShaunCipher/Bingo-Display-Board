@@ -61,6 +61,31 @@ body {
     border-radius: 10px
 }
 
+.history-container {
+    background: #ddd;
+    border: 2px solid #aaa;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.history-title {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.history-list {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
 .pattern-title {
     text-align: center;
     font-size: 22px;
