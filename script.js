@@ -101,6 +101,9 @@ function applySettings() {
 
     document.querySelectorAll(".num-btn").forEach(btn => {
         btn.style.fontSize = `${fontSize}px`;
+
+        const verticalPadding = fontSize > 20 ? '4px' : '2px';
+        btn.style.padding = `${verticalPadding} 2px`;
     });
 }
 

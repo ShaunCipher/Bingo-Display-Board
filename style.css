@@ -5,9 +5,31 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    background-color: #f4f4f4; 
+    background-image: url('logo.png');
+    background-repeat: no-repeat;
+    background-position: right 20px bottom 20px; 
+    background-size: 150px; 
+    background-attachment: fixed; 
+    
     height: 100vh;
     overflow: hidden;
+}
+
+body::after {
+    content: "";
+    background-image: url('logo_transparent.png');
+    background-repeat: no-repeat;
+    background-position: right 20px bottom 20px;
+    background-size: 80px;
+    opacity: 0.3; /* This makes it 30% visible (watermark style) */
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: -1; /* Puts it behind everything */
+    pointer-events: none; /* Makes sure you can still click buttons over it */
 }
 
 .container {
@@ -34,18 +56,17 @@ body {
     gap: 12px;
 }
 
-/* Bingo Grid Logic */
 .bingo-grid {
     display: grid;
     grid-template-columns: repeat(5, minmax(0, 1fr));
-    gap: 6px;
+    gap: 4px;
     height: 100%;
     width: 100%;
 }
 
 .column {
     display: grid;
-    grid-template-rows: auto repeat(15, 1fr);
+    grid-template-rows: auto repeat(15, minmax(0, 1fr));
     gap: 4px;
 }
 
@@ -235,7 +256,7 @@ body {
 
 .settings-group label {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-size: 14px;
 }
