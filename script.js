@@ -11,7 +11,6 @@ const bingoGrid = document.getElementById("bingoGrid");
 const lastCalled = document.getElementById("lastCalled");
 const historyList = document.getElementById("callHistory");
 
-// Build Bingo Grid
 for (const letter in bingoRanges) {
     const col = document.createElement("div");
     col.className = "column";
@@ -45,7 +44,6 @@ for (const letter in bingoRanges) {
     bingoGrid.appendChild(col);
 }
 
-// Build Pattern Grid
 const patternGrid = document.getElementById("patternGrid");
 for (let i = 0; i < 25; i++) {
     const btn = document.createElement("button");
