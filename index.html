@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jusgado | Bingo Display Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    
+<div class="container">
+
+    <div class="left">
+        <div class="bingo-grid" id="bingoGrid"></div>
+    </div>
+
+    <div class="right">
+        <div class="recent">
+            Last Called:<br>
+            <span id="lastCalled">---</span>
+        </div>
+        <div>
+            <div class="pattern-title">Winning Pattern</div>
+            <div class="pattern-letters"><div>B</div><div>I</div><div>N</div><div>G</div><div>O</div> </div>
+            <div class="pattern-grid" id="patternGrid"></div>
+        </div>
+        
+        <div class="controls">
+            <button class="reset-btn" onclick="resetGame()">New Game</button>
+        </div>
+        
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
