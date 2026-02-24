@@ -3,7 +3,7 @@ const bingoRanges = {
     I: [16, 30],
     N: [31, 45],
     G: [46, 60],
-    O: [61, 75],
+    O: [61, 75]
 };
 
 let calledHistory = [];
@@ -12,6 +12,7 @@ const lastCalled = document.getElementById("lastCalled");
 const historyDisplay = document.getElementById("callHistory");
 const patternGrid = document.getElementById("patternGrid");
 
+// BUILD BINGO BOARD
 for (const letter in bingoRanges) {
     const col = document.createElement("div");
     col.className = "column";
@@ -35,21 +36,20 @@ for (const letter in bingoRanges) {
                 lastCalled.textContent = num;
                 calledHistory.unshift(num);
             } else {
-                lastCalled.textContent = "---";
-                calledHistory = calledHistory.filter((n) => n !== num);
+                calledHistory = calledHistory.filter(n => n !== num);
+                lastCalled.textContent = calledHistory.length > 0 ? calledHistory[0] : "---";
             }
             updateHistoryDisplay();
         };
-
         col.appendChild(btn);
     }
     bingoGrid.appendChild(col);
 }
 
+// BUILD PATTERN GRID
 for (let i = 0; i < 25; i++) {
     const btn = document.createElement("button");
     btn.className = "pattern-btn";
-
     if (i === 12) {
         btn.textContent = "★";
         btn.classList.add("free");
@@ -57,7 +57,6 @@ for (let i = 0; i < 25; i++) {
     } else {
         btn.onclick = () => btn.classList.toggle("active");
     }
-
     patternGrid.appendChild(btn);
 }
 
@@ -65,20 +64,20 @@ function updateHistoryDisplay() {
     if (calledHistory.length === 0) {
         historyDisplay.textContent = "---";
     } else {
-        const displayLimit = 10;
-        const recentNumbers = calledHistory.slice(0, displayLimit);
-        let htmlContent = `<span class="newest-call">${recentNumbers[0]}</span>`;
-        if (recentNumbers.length > 1) {
-            htmlContent += ", " + recentNumbers.slice(1).join(", ");
+        const displayLimit = 8;
+        const recent = calledHistory.slice(0, displayLimit);
+        let html = `<span class="newest-call">${recent[0]}</span>`;
+        if (recent.length > 1) {
+            html += ", " + recent.slice(1).join(", ");
         }
-        historyDisplay.innerHTML = htmlContent;
+        historyDisplay.innerHTML = html;
     }
 }
 
 function resetGame() {
     if (!confirm("Start a new game?")) return;
-    document.querySelectorAll(".num-btn").forEach((b) => b.classList.remove("active"));
-    document.querySelectorAll(".pattern-btn").forEach((b) => b.classList.remove("active"));
+    document.querySelectorAll(".num-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".pattern-btn").forEach(b => b.classList.remove("active"));
     lastCalled.textContent = "---";
     calledHistory = [];
     updateHistoryDisplay();
@@ -91,9 +90,9 @@ function toggleSettings() {
 
 function applySettings() {
     const t = document.getElementById("padTop").value;
-    const r = document.getElementById("padRight").value;
     const b = document.getElementById("padBottom").value;
     const l = document.getElementById("padLeft").value;
+    const r = document.getElementById("padRight").value;
     const fontSize = document.getElementById("fontInput").value;
 
     const container = document.querySelector(".container");
@@ -101,9 +100,6 @@ function applySettings() {
 
     document.querySelectorAll(".num-btn").forEach(btn => {
         btn.style.fontSize = `${fontSize}px`;
-
-        const verticalPadding = fontSize > 20 ? '4px' : '2px';
-        btn.style.padding = `${verticalPadding} 2px`;
     });
 }
 

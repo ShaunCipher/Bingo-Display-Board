@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jusgado | Bingo Display Board</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Bingo Caller Pro</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-    
-<div class="container">
 
+<div class="container">
     <div class="left">
         <div class="bingo-grid" id="bingoGrid"></div>
     </div>
@@ -23,48 +20,47 @@
         </div>
 
         <div class="history-container">
-            <div class='history-title'>Previous Calls</div>
+            <div class="history-title">History</div>
             <div id="callHistory" class="history-list">---</div>
         </div>
 
         <div>
             <div class="pattern-title">Winning Pattern</div>
-            <div class="pattern-letters"><div>B</div><div>I</div><div>N</div><div>G</div><div>O</div> </div>
+            <div class="pattern-letters">
+                <div>B</div><div>I</div><div>N</div><div>G</div><div>O</div>
+            </div>
             <div class="pattern-grid" id="patternGrid"></div>
         </div>
 
         <div class="controls">
             <button class="reset-btn" onclick="resetGame()">New Game</button>
             <button class="settings-toggle" onclick="toggleSettings()">⚙️</button>
+        </div>
+    </div>
+</div>
 
-            <div id="settingsPanel" class="settings-panel">
-                <h3>Display Settings</h3>
-                
-                <div class="settings-group">
-                    <p><strong>Padding</strong></p>
-                    <label>Top: <input type="range" id="padTop" min="0" max="100" value="10" oninput="applySettings()"></label>
-                    <label>Bottom: <input type="range" id="padBottom" min="0" max="100" value="10" oninput="applySettings()"></label>
-                    <label>Left: <input type="range" id="padLeft" min="0" max="100" value="10" oninput="applySettings()"></label>
-                    <label>Right: <input type="range" id="padRight" min="0" max="100" value="10" oninput="applySettings()"></label>
-                </div>
-
-                <div class="settings-group">
-                    <label><strong>Number Font Size (px)</strong></label>
-                    <input type="range" id="fontInput" min="10" max="50" value="24" oninput="applySettings()">
-                </div>
-
-                <div class="settings-buttons">
-                    <button class="reset-all-btn" onclick="resetDisplayDefaults()">Reset to Default</button>
-                    <button onclick="toggleSettings()">Close</button>
-                </div>
-            </div>
-        </div>       
-
+<div id="settingsPanel" class="settings-panel">
+    <h3>Display Settings</h3>
+    
+    <div class="settings-group">
+        <p><strong>Container Padding</strong></p>
+        <label>Top: <input type="range" id="padTop" min="0" max="100" value="10" oninput="applySettings()"></label>
+        <label>Bottom: <input type="range" id="padBottom" min="0" max="100" value="10" oninput="applySettings()"></label>
+        <label>Left: <input type="range" id="padLeft" min="0" max="100" value="10" oninput="applySettings()"></label>
+        <label>Right: <input type="range" id="padRight" min="0" max="100" value="10" oninput="applySettings()"></label>
     </div>
 
+    <div class="settings-group">
+        <label><strong>Number Font Size (px)</strong></label>
+        <input type="range" id="fontInput" min="10" max="50" value="24" oninput="applySettings()">
+    </div>
+
+    <div class="settings-buttons">
+        <button class="reset-all-btn" onclick="resetDisplayDefaults()">Reset to Defaults</button>
+        <button class="close-settings-btn" onclick="toggleSettings()">Close</button>
+    </div>
 </div>
 
 <script src="script.js"></script>
 </body>
-
 </html>
