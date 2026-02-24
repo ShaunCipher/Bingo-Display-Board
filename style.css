@@ -1,17 +1,52 @@
-* {box-sizing:border-box}
+* {
+    box-sizing: border-box;
+}
 
 body {
-    margin: 10;
+    margin: 0;
     font-family: Arial, sans-serif;
     background: #f4f4f4;
     height: 100vh;
     overflow: hidden;
 }
 
+.container {
+    display: flex;
+    height: 100vh;
+    padding: 10px;
+    overflow: hidden;
+    transition: padding 0.1s ease; /* Smooth transition when sliding */
+}
+
+.left {
+    flex: 2;
+    padding: 10px;
+    overflow-y: auto;
+    position: relative;
+}
+
+.right {
+    flex: 1;
+    padding: 10px;
+    border-left: 3px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Bingo Grid Logic */
+.bingo-grid {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    height: 100%;
+    width: 100%;
+}
+
 .column {
     display: grid;
     grid-template-rows: auto repeat(15, 1fr);
-    gap: 4px
+    gap: 4px;
 }
 
 .header {
@@ -21,36 +56,31 @@ body {
     background: #333;
     color: white;
     padding: 6px;
-    border-radius: 6px
+    border-radius: 6px;
 }
 
-.left {
-    flex: 2;
-    padding: 10px;
+.num-btn {
+    background: #ddd;
+    border: 2px solid #aaa;
+    border-radius: 6px;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 4px;
+    transition: 0.2s;
+    min-width: 0; 
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.right {
-    flex: 1;
-    padding: 10px;
-    border-left: 3px solid #ccc;
-    display: flex;
-    flex-direction: column;
-    gap: 12px
+.num-btn.active {
+    background: #4caf50;
+    color: white;
+    border-color: #2e7d32;
 }
 
-.container {
-    display: flex;
-    height: 100vh;
-    padding-bottom: 250px;
-}
-
-.bingo-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    height: 100%
-}
-
+/* Sidebar Elements */
 .recent {
     text-align: center;
     font-size: 34px;
@@ -58,7 +88,7 @@ body {
     background: #333;
     color: #fff;
     padding: 15px;
-    border-radius: 10px
+    border-radius: 10px;
 }
 
 .history-container {
@@ -87,31 +117,32 @@ body {
 }
 
 .newest-call {
-    color:#2e7d32;
+    color: #2e7d32;
     font-weight: bold;
 }
 
+/* Pattern Grid */
 .pattern-title {
     text-align: center;
     font-size: 22px;
-    margin: 10px 0 6px
+    margin: 10px 0 6px;
 }
 
 .pattern-letters {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 6px;
-    margin-bottom: 6px
+    margin-bottom: 6px;
 }
 
 .pattern-letters div {
     text-align: center;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 18px;
     background: #333;
     color: white;
     padding: 4px;
-    border-radius: 4px
+    border-radius: 4px;
 }
 
 .pattern-grid {
@@ -121,18 +152,12 @@ body {
 }
 
 .pattern-btn {
-    height:55px;
+    height: 55px;
     background: #eee;
     border: 2px solid #aaa;
     border-radius: 6px;
     cursor: pointer;
     font-size: 20px;
-}
-
-.free {
-    background: gold;
-    font-weight: bold;
-    cursor: default;
 }
 
 .pattern-btn.active {
@@ -141,9 +166,20 @@ body {
     border-color: #1565c0;
 }
 
+.free {
+    background: gold;
+    font-weight: bold;
+    cursor: default;
+}
+
+/* Control Buttons */
 .controls {
     text-align: center;
     margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .reset-btn {
@@ -156,22 +192,93 @@ body {
     cursor: pointer;
 }
 
-.reset-btn.hover {
+.reset-btn:hover {
     background: #b71c1c;
 }
 
-.num-btn {
-    background: #ddd;
-    border: 2px solid #aaa;
-    border-radius: 6px;
-    font-size: 24px;
+.settings-toggle {
+    background-color: #444;
+    color: white;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
     cursor: pointer;
-    padding: 4px;
-    transition: 0.2s;
 }
 
-.num-btn.active {
-background: #4caf50;
-color: white;
-border-color: #2e7d32;
+.settings-toggle:hover {
+    background-color: #222;
+}
+
+/* Settings Panel (Tablet Optimized) */
+.settings-panel {
+    display: none;
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    background: white;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    flex-direction: column;
+    gap: 12px; /* Controlled gap */
+    width: 280px;
+}
+
+.settings-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.settings-group label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+/* Bold Labels for Tablet Readability */
+.settings-group label strong,
+.settings-group p strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.settings-group input[type="range"] {
+    width: 100%;
+    cursor: pointer;
+    margin-top: 4px;
+}
+
+.settings-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.reset-all-btn {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+.reset-all-btn:hover {
+    background-color: #222;
+}
+
+.close-settings-btn {
+    background: #eee;
+    border: 1px solid #ccc;
+    padding: 8px;
+    border-radius: 6px;
+    cursor: pointer;
 }

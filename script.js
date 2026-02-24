@@ -67,9 +67,7 @@ function updateHistoryDisplay() {
     } else {
         const displayLimit = 10;
         const recentNumbers = calledHistory.slice(0, displayLimit);
-
         let htmlContent = `<span class="newest-call">${recentNumbers[0]}</span>`;
-
         if (recentNumbers.length > 1) {
             htmlContent += ", " + recentNumbers.slice(1).join(", ");
         }
@@ -84,4 +82,33 @@ function resetGame() {
     lastCalled.textContent = "---";
     calledHistory = [];
     updateHistoryDisplay();
+}
+
+function toggleSettings() {
+    const panel = document.getElementById("settingsPanel");
+    panel.style.display = (panel.style.display === "flex") ? "none" : "flex";
+}
+
+function applySettings() {
+    const t = document.getElementById("padTop").value;
+    const r = document.getElementById("padRight").value;
+    const b = document.getElementById("padBottom").value;
+    const l = document.getElementById("padLeft").value;
+    const fontSize = document.getElementById("fontInput").value;
+
+    const container = document.querySelector(".container");
+    container.style.padding = `${t}px ${r}px ${b}px ${l}px`;
+
+    document.querySelectorAll(".num-btn").forEach(btn => {
+        btn.style.fontSize = `${fontSize}px`;
+    });
+}
+
+function resetDisplayDefaults() {
+    document.getElementById("padTop").value = 10;
+    document.getElementById("padBottom").value = 10;
+    document.getElementById("padLeft").value = 10;
+    document.getElementById("padRight").value = 10;
+    document.getElementById("fontInput").value = 24;
+    applySettings();
 }

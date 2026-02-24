@@ -32,11 +32,34 @@
             <div class="pattern-letters"><div>B</div><div>I</div><div>N</div><div>G</div><div>O</div> </div>
             <div class="pattern-grid" id="patternGrid"></div>
         </div>
-        
+
         <div class="controls">
             <button class="reset-btn" onclick="resetGame()">New Game</button>
-        </div>
-        
+            <button class="settings-toggle" onclick="toggleSettings()">⚙️</button>
+
+            <div id="settingsPanel" class="settings-panel">
+                <h3>Display Settings</h3>
+                
+                <div class="settings-group">
+                    <p><strong>Padding</strong></p>
+                    <label>Top: <input type="range" id="padTop" min="0" max="100" value="10" oninput="applySettings()"></label>
+                    <label>Bottom: <input type="range" id="padBottom" min="0" max="100" value="10" oninput="applySettings()"></label>
+                    <label>Left: <input type="range" id="padLeft" min="0" max="100" value="10" oninput="applySettings()"></label>
+                    <label>Right: <input type="range" id="padRight" min="0" max="100" value="10" oninput="applySettings()"></label>
+                </div>
+
+                <div class="settings-group">
+                    <label><strong>Number Font Size (px)</strong></label>
+                    <input type="range" id="fontInput" min="10" max="50" value="24" oninput="applySettings()">
+                </div>
+
+                <div class="settings-buttons">
+                    <button class="reset-all-btn" onclick="resetDisplayDefaults()">Reset to Default</button>
+                    <button onclick="toggleSettings()">Close</button>
+                </div>
+            </div>
+        </div>       
+
     </div>
 
 </div>
