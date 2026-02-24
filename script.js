@@ -65,7 +65,15 @@ function updateHistoryDisplay() {
     if (calledHistory.length === 0) {
         historyDisplay.textContent = "---";
     } else {
-        historyDisplay.textContent = calledHistory.slice(0, 10).join(", ");
+        const displayLimit = 10;
+        const recentNumbers = calledHistory.slice(0, displayLimit);
+
+        let htmlContent = `<span class="newest-call">${recentNumbers[0]}</span>`;
+
+        if (recentNumbers.length > 1) {
+            htmlContent += ", " + recentNumbers.slice(1).join(", ");
+        }
+        historyDisplay.innerHTML = htmlContent;
     }
 }
 
