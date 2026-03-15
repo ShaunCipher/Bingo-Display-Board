@@ -22,7 +22,31 @@ If the bottom numbers (like 74 and 75) are hidden by your tablet's navigation ba
 * **Display Controls:** On-the-fly adjustments for padding (Top, Bottom, Left, Right) to fit any screen or projector.
 
 ---
+# UPDATE
+New features to be added:
 
+1. Real time connectivity
+   - Allows phones to connect so that they can see the live view
+   - separate gui 
+   - Any number of people can join 
+2. Auto-Marker and Card Upload
+   - Lets player uplaod their card online
+   - The system will automatically mark their card for the numbers called to ensure that there is no "sleeper"
+   - Card color can be customized to match the physical card 
+3. Voice caller
+   - automated voice teller for every numbers called
+   - call number as a whole and as its fragmented form 
+4. Digital Tumbler
+   - Draws the number by itself
+   - can control the speed of the caller
+5. Prize Pool Display
+   - Shows the pot money on the screen 
+6. Statistics
+   - Shows most frequent numbers
+7. Display GUI update
+   - Make sure to be responsive on all devices
+
+---
 ## ⚖️ License & Copyright
 © 2026 Charlene Jusgado / ShaunCipher. All rights reserved.  
 **Viewing allowed, copying or reuse prohibited.**
